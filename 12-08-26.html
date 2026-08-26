@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tareas</title>
+
+</head>
+<body>
+
+  <h1>Mis Tareas</h1>
+  
+  <!-- Contenedor alineado horizontalmente -->
+  <div class="formulario-tarea">
+    <label for="demoTareaInput">Nueva tarea:</label>
+    <input type="text" id="demoTareaInput" placeholder="Escribe aquí...">
+    <button id="demoAgregarBtn">Agregar</button>
+  </div>
+
+  <!-- Lista donde se enlistan los elementos -->
+  <ul id="demoListaTareas"></ul>
+
+  <!-- Contador inferior -->
+  <div class="contador-container">
+    Total de tareas: <span id="demoContador">0</span>
+  </div>
+
+  <script>
+    const tareaInput = document.getElementById('demoTareaInput');
+    const agregarBtn = document.getElementById('demoAgregarBtn');
+    const listaTareas = document.getElementById('demoListaTareas');
+    const contador = document.getElementById('demoContador');
+
+    let totalTareas = 0;
+
+    agregarBtn.addEventListener('click', function() {
+      const nuevaTareaTexto = tareaInput.value;
+      if (nuevaTareaTexto.trim() === '') return;
+
+      // Crear el elemento li
+      const nuevaTareaLi = document.createElement('li');
+      nuevaTareaLi.textContent = nuevaTareaTexto;
+      listaTareas.appendChild(nuevaTareaLi);
+
+      // Limpiar el campo
+      tareaInput.value = '';
+
+      // Incrementar contador
+      totalTareas++;
+      contador.textContent = totalTareas;
+    });
+  </script>
+
+</body>
+</html>
