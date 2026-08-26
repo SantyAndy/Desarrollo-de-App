@@ -1,5 +1,5 @@
 {
-  "name": "clase-promise",
+  "name": "clase-api",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:Clase_Promise": "node dist/Clase_Promise/server/server.mjs"
+    "serve:ssr:Clase_Api": "node dist/Clase_Api/server/server.mjs"
   },
   "private": true,
   "packageManager": "npm@11.10.0",
