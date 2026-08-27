@@ -1,0 +1,12 @@
+<section class="characters-container">
+  <h2 class="title">Personajes</h2>
+  
+  <ul class="character-grid">
+    <li *ngFor="let personaje of personajes" class="character-card">
+      <div class="image-wrapper">
+        <img [src]="personaje.image" [alt]="personaje.name" loading="lazy" />
+      </div>
+      <span class="character-name">{{ personaje.name }}</span>
+    </li>
+  </ul>
+</section>
