@@ -1,0 +1,32 @@
+:host {
+  display: block;
+}
+
+.fab-status {
+  margin-bottom: 0;
+  color: var(--ion-color-primary);
+  font-weight: 600;
+}
+
+ion-fab {
+  margin: 0 1rem 1rem 0;
+}
+
+.demo-card:nth-child(1) ion-card-header::before {
+  background: #8b5cf6;
+}
+
+.demo-card:nth-child(2) ion-card-header::before {
+  background: var(--app-accent);
+}
+
+.demo-card ion-list {
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  overflow: hidden;
+  background: var(--app-surface-raised);
+}
+
+ion-fab-button {
+  --box-shadow: 0 0.55rem 1.2rem rgba(18, 38, 72, 0.18);
+}

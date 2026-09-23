@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="page-intro">
+    <h1>Datos</h1>
+    <p>Filtra, ordena, actualiza y carga contenido local en tiempo real.</p>
+  </section>
+
+  <main class="showcase">
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Searchbar</ion-card-title>
+        <ion-card-subtitle>Busca tecnologías y actualiza la lista mientras escribes.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-searchbar
+          [(ngModel)]="query"
+          placeholder="Buscar tecnología"
+          (ionInput)="onSearch($event)"
+          aria-label="Buscar tecnología"
+        ></ion-searchbar>
+        <p class="result-summary">Coincidencias: {{ filtered.length }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Segment</ion-card-title>
+        <ion-card-subtitle>Cambia entre todos los registros y los elementos guardados.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-segment [(ngModel)]="segment" (ionChange)="onSegmentChange()">
+          <ion-segment-button value="all">
+            <ion-label>Todos</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="saved">
+            <ion-label>Guardados</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        <ion-list>
+          <ion-list-header>
+            <ion-label>Resultados visibles</ion-label>
+          </ion-list-header>
+          @for (item of filtered.slice(0, visible); track item) {
+            <ion-item>
+              <ion-icon slot="start" name="code-slash-outline"></ion-icon>
+              <ion-label>{{ item }}</ion-label>
+              @if (savedItems.has(item)) {
+                <ion-note slot="end">Guardado</ion-note>
+              }
+            </ion-item>
+          } @empty {
+            <ion-item>
+              <ion-label>No hay resultados para este filtro.</ion-label>
+            </ion-item>
+          }
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Infinite scroll</ion-card-title>
+        <ion-card-subtitle>Carga tres elementos adicionales al llegar al final de la lista.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          @for (item of filtered.slice(0, visible); track item) {
+            <ion-item>
+              <ion-label>{{ item }}</ion-label>
+              <ion-note slot="end">#{{ $index + 1 }}</ion-note>
+            </ion-item>
+          }
+        </ion-list>
+        <ion-infinite-scroll
+          [disabled]="visible >= filtered.length"
+          (ionInfinite)="loadMore($event)"
+        >
+          <ion-infinite-scroll-content loadingText="Cargando más ejemplos..."></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+        <p class="result-summary">{{ visible }} de {{ filtered.length }} elementos visibles</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Refresher</ion-card-title>
+        <ion-card-subtitle>Desliza la página hacia abajo para simular una actualización.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="refresh-status">{{ refreshLabel }}</p>
+        <p class="muted">El evento ionRefresh completa el gesto después de una espera breve.</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Reorder</ion-card-title>
+        <ion-card-subtitle>Arrastra las tareas para cambiar su prioridad.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-reorder-group [disabled]="false" (ionItemReorder)="reorder($event)">
+          @for (task of reorderItems; track task) {
+            <ion-item>
+              <ion-label>{{ $index + 1 }}. {{ task }}</ion-label>
+              <ion-reorder slot="end"></ion-reorder>
+            </ion-item>
+          }
+        </ion-reorder-group>
+        <p class="result-summary">El nuevo orden se conserva en la lista.</p>
+      </ion-card-content>
+    </ion-card>
+  </main>
+
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content pullingText="Desliza para actualizar"></ion-refresher-content>
+  </ion-refresher>
+</ion-content>

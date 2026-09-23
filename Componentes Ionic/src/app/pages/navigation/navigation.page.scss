@@ -1,0 +1,45 @@
+:host {
+  display: block;
+}
+
+.selected-tab {
+  margin: 1rem 0 0;
+  color: var(--ion-color-primary);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+ion-back-button {
+  margin-top: 0.65rem;
+  --color: var(--ion-color-primary);
+}
+
+.demo-card:nth-child(1) ion-card-header::before {
+  background: #8b5cf6;
+}
+
+.demo-card:nth-child(2) ion-card-header::before {
+  background: var(--ion-color-primary);
+}
+
+.demo-card:nth-child(3) ion-card-header::before {
+  background: var(--app-accent);
+}
+
+.demo-card:nth-child(4) ion-card-header::before {
+  background: #f59e0b;
+}
+
+ion-breadcrumbs {
+  flex-wrap: wrap;
+  row-gap: 0.4rem;
+}
+
+ion-tabs {
+  display: block;
+  min-height: 8.5rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  overflow: hidden;
+  background: var(--app-surface-raised);
+}

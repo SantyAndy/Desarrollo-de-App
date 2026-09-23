@@ -1,0 +1,87 @@
+<ion-app>
+  <ion-header class="app-header" [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        <span class="eyebrow">IONIC</span>
+        <span class="title">Mis tareas</span>
+      </ion-title>
+      <ion-icon slot="end" name="sparkles-outline" aria-hidden="true"></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-heading">
+        <p class="eyebrow">ORGANIZA TU DÍA</p>
+        <h1 id="page-heading">Todo en un solo lugar.</h1>
+        <p class="intro-copy">Agrega tus pendientes y avanza paso a paso.</p>
+      </section>
+
+      <form class="task-form" (submit)="addTask(); $event.preventDefault()">
+        <ion-item lines="none" class="task-input">
+          <ion-icon slot="start" name="create-outline" aria-hidden="true"></ion-icon>
+          <ion-input
+            [value]="newTask()"
+            (ionInput)="updateNewTask($any($event).detail.value)"
+            label="Nueva tarea"
+            label-placement="stacked"
+            placeholder="¿Qué necesitas hacer?"
+            autocomplete="off"
+          ></ion-input>
+        </ion-item>
+        <ion-button type="submit" class="add-button" aria-label="Agregar tarea">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+      </form>
+
+      <section class="summary" aria-live="polite">
+        <div>
+          <p class="eyebrow">LISTA PERSONAL</p>
+          <h2>Pendientes</h2>
+        </div>
+        <ion-badge color="primary">{{ pendingCount }}</ion-badge>
+      </section>
+
+      @if (tasks().length === 0) {
+        <ion-card class="empty-state">
+          <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+          <h2>¡Todo al día!</h2>
+          <p>No tienes tareas pendientes.</p>
+        </ion-card>
+      } @else {
+        <ion-list class="task-list" lines="none">
+          @for (task of tasks(); track task.id) {
+            <ion-item class="task-card" [class.completed]="task.completed">
+              <ion-checkbox
+                slot="start"
+                [checked]="task.completed"
+                (ionChange)="toggleTask(task.id)"
+                [attr.aria-label]="'Marcar ' + task.title + ' como completada'"
+              ></ion-checkbox>
+              <ion-label>
+                <span class="task-title">{{ task.title }}</span>
+                <span class="task-status">{{ task.completed ? 'Completada' : 'Pendiente' }}</span>
+              </ion-label>
+              <ion-button
+                slot="end"
+                fill="clear"
+                color="medium"
+                class="delete-button"
+                (click)="deleteTask(task.id)"
+                [attr.aria-label]="'Eliminar ' + task.title"
+              >
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+          }
+        </ion-list>
+      }
+    </main>
+  </ion-content>
+
+  <ion-footer class="app-footer">
+    <ion-toolbar>
+      <p>{{ pendingCount }} {{ pendingCount === 1 ? 'tarea pendiente' : 'tareas pendientes' }}</p>
+    </ion-toolbar>
+  </ion-footer>
+</ion-app>

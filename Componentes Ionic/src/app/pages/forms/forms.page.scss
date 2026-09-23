@@ -1,0 +1,46 @@
+:host {
+  display: block;
+}
+
+.form-value {
+  margin: 0.75rem 0 0;
+  color: var(--app-muted);
+  font-size: 0.9rem;
+}
+
+.form-value,
+.range-value {
+  line-height: 1.5;
+}
+
+.demo-card:nth-child(3n + 1) ion-card-header::before {
+  background: var(--ion-color-primary);
+}
+
+.demo-card:nth-child(3n + 2) ion-card-header::before {
+  background: var(--app-accent);
+}
+
+.demo-card:nth-child(3n) ion-card-header::before {
+  background: #8b5cf6;
+}
+
+.demo-card ion-checkbox,
+.demo-card ion-toggle {
+  min-height: 2.9rem;
+  color: var(--app-ink);
+  font-weight: 600;
+}
+
+.demo-card ion-radio-group {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.demo-card ion-datetime {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface-raised);
+}

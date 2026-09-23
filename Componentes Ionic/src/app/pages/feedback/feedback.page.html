@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="page-intro">
+    <h1>Feedback</h1>
+    <p>Mensajes e indicadores que mantienen al usuario informado.</p>
+  </section>
+
+  <main class="showcase">
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Alert</ion-card-title>
+        <ion-card-subtitle>Solicita atención y permite cerrar un mensaje importante.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button (click)="alert = true">Mostrar alert</ion-button>
+        <ion-alert
+          [isOpen]="alert"
+          header="Confirmación"
+          message="La demostración de alert funciona correctamente."
+          [buttons]="['Cerrar']"
+          (didDismiss)="alert = false"
+        ></ion-alert>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Toast</ion-card-title>
+        <ion-card-subtitle>Confirma una acción sin interrumpir el flujo de trabajo.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button color="success" (click)="toast = true">Mostrar toast</ion-button>
+        <ion-toast
+          [isOpen]="toast"
+          message="Acción completada"
+          duration="2200"
+          color="success"
+          position="bottom"
+          (didDismiss)="toast = false"
+        ></ion-toast>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Progress bar</ion-card-title>
+        <ion-card-subtitle>Representa visualmente cuánto falta para terminar una tarea.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-progress-bar [value]="progress"></ion-progress-bar>
+        <p class="feedback-value">{{ (progress * 100).toFixed(0) }}% completado</p>
+        <ion-button size="small" fill="outline" (click)="advanceProgress()">Avanzar</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+  </main>
+</ion-content>

@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button aria-label="Abrir menú principal"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <main class="home-page">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Desarrollo de aplicaciones</p>
+      <h1 id="page-title">Ionic Components Showcase</h1>
+      <p class="intro__description">
+        Una guía visual para explorar componentes Ionic con Angular mediante ejemplos claros, accionables y
+        fáciles de probar.
+      </p>
+    </section>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <div class="hero__kicker">
+          <span class="hero__kicker-dot" aria-hidden="true"></span>
+          Laboratorio interactivo
+        </div>
+        <h2 id="hero-title">Diseña, prueba y aprende en un solo lugar.</h2>
+        <p>
+          Recorre las categorías del showcase y descubre cómo cada pieza encaja en una experiencia de producto
+          completa.
+        </p>
+        <ion-button class="hero__button" color="light" routerLink="/components">
+          Explorar componentes
+          <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="hero__visual" aria-label="Vista previa de una interfaz Ionic" role="img">
+        <div class="visual-window">
+          <div class="visual-window__topbar">
+            <span></span><span></span><span></span>
+            <ion-icon name="ellipsis-horizontal-outline" aria-hidden="true"></ion-icon>
+          </div>
+          <div class="visual-window__body">
+            <div class="visual-sidebar">
+              <span class="visual-sidebar__logo"></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="visual-dashboard">
+              <div class="visual-dashboard__heading">
+                <span></span>
+                <ion-badge color="success">Activo</ion-badge>
+              </div>
+              <div class="visual-stat-row">
+                <span></span><span></span>
+              </div>
+              <div class="visual-chart">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="visual-lines">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Resumen del showcase">
+      <div class="stat">
+        <strong>{{ totalSections }}</strong>
+        <span>secciones</span>
+      </div>
+      <div class="stat">
+        <strong>{{ categoryCount }}</strong>
+        <span>categorías de componentes</span>
+      </div>
+      <div class="stat stat--text">
+        <strong>Angular + Ionic</strong>
+        <span>tecnologías del proyecto</span>
+      </div>
+    </section>
+
+    <section class="sections" aria-labelledby="sections-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Áreas de aprendizaje</p>
+          <h2 id="sections-title">Explora por categoría</h2>
+        </div>
+        <p>Elige una sección para comenzar a experimentar con demos reales.</p>
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          @for (section of sections; track section.route) {
+            <ion-col size="12" size-md="6" size-lg="4">
+              <ion-card class="section-card">
+                <ion-card-header>
+                  <div class="section-card__icon" aria-hidden="true">
+                    <ion-icon [name]="section.icon"></ion-icon>
+                  </div>
+                  <ion-card-title>{{ section.title }}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <p>{{ section.description }}</p>
+                  <ion-button fill="clear" [routerLink]="section.route">
+                    Ver demostración
+                    <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+                  </ion-button>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          }
+        </ion-row>
+      </ion-grid>
+    </section>
+  </main>
+</ion-content>

@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+ion-modal ion-content {
+  --background: var(--ion-background-color);
+}
+
+ion-popover {
+  --width: min(20rem, calc(100vw - 2rem));
+}
+
+.demo-card:nth-child(1) ion-card-header::before {
+  background: var(--ion-color-primary);
+}
+
+.demo-card:nth-child(2) ion-card-header::before {
+  background: var(--app-accent);
+}
+
+.demo-card:nth-child(3) ion-card-header::before {
+  background: #8b5cf6;
+}
+
+.demo-card ion-modal ion-toolbar {
+  --background: var(--app-surface);
+}

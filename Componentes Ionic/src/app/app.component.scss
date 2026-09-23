@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  min-height: 100%;
+}
+
+ion-router-outlet {
+  background: var(--app-background);
+}
+
+ion-split-pane {
+  --side-width: 19rem;
+  --side-min-width: 19rem;
+  --side-max-width: 19rem;
+}

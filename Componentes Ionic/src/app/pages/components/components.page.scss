@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+.demo-card:nth-child(3n + 1) ion-card-header::before {
+  background: var(--ion-color-primary);
+}
+
+.demo-card:nth-child(3n + 2) ion-card-header::before {
+  background: var(--app-accent);
+}
+
+.demo-card:nth-child(3n) ion-card-header::before {
+  background: #8b5cf6;
+}
+
+.nested-card {
+  margin: 0;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface-raised);
+  box-shadow: none;
+}
+
+.icon-demo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3rem;
+  color: var(--app-ink);
+  font-weight: 650;
+}
+
+.icon-demo ion-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.text-demo {
+  margin: 0;
+  font-weight: 600;
+}
+
+.selection-value {
+  margin: 0.65rem 0 0;
+  color: var(--app-muted);
+  font-size: 0.9rem;
+  font-weight: 650;
+}

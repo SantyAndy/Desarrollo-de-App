@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Navegación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="page-intro">
+    <h1>Navegación</h1>
+    <p>Patrones para desplazarse entre vistas y conservar el contexto.</p>
+  </section>
+
+  <main class="showcase">
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Breadcrumbs</ion-card-title>
+        <ion-card-subtitle>Indica la ubicación actual dentro de una jerarquía de páginas.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-breadcrumbs>
+          <ion-breadcrumb routerLink="/home">Inicio</ion-breadcrumb>
+          <ion-breadcrumb routerLink="/components">Showcase</ion-breadcrumb>
+          <ion-breadcrumb>Navegación</ion-breadcrumb>
+        </ion-breadcrumbs>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Back button</ion-card-title>
+        <ion-card-subtitle>Regresa a una ruta segura cuando no existe historial previo.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button routerLink="/home" fill="outline">
+          <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+          Volver al inicio
+        </ion-button>
+        <ion-back-button defaultHref="/home" text="Atrás"></ion-back-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Buttons y routerLink</ion-card-title>
+        <ion-card-subtitle>Combina acciones y enlaces para navegar a otra demostración.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-buttons>
+          <ion-button routerLink="/forms">Abrir formularios</ion-button>
+          <ion-button routerLink="/data" fill="outline">Abrir datos</ion-button>
+        </ion-buttons>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Tabs</ion-card-title>
+        <ion-card-subtitle>Cambia entre rutas principales desde una barra persistente.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-tabs (ionTabsDidChange)="onTabChange($event)">
+          <ion-tab-bar slot="bottom">
+            <ion-tab-button tab="home" routerLink="/home">
+              <ion-icon name="home-outline"></ion-icon>
+              <ion-label>Inicio</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="data" routerLink="/data">
+              <ion-icon name="list-outline"></ion-icon>
+              <ion-label>Datos</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="forms" routerLink="/forms">
+              <ion-icon name="create-outline"></ion-icon>
+              <ion-label>Formularios</ion-label>
+            </ion-tab-button>
+          </ion-tab-bar>
+        </ion-tabs>
+        <p class="selected-tab">Pestaña activa: {{ selectedTab }}</p>
+      </ion-card-content>
+    </ion-card>
+  </main>
+</ion-content>

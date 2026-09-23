@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Multimedia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="page-intro">
+    <h1>Multimedia</h1>
+    <p>Recursos visuales locales con texto alternativo y presentación adaptable.</p>
+  </section>
+
+  <main class="showcase">
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Avatar</ion-card-title>
+        <ion-card-subtitle>Representa a una persona o entidad en una fila de contenido.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="assets/avatar.svg" alt="Avatar de estudiante" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Estudiante Ionic</h2>
+            <p>Perfil activo</p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Img</ion-card-title>
+        <ion-card-subtitle>Carga una imagen y notifica cuándo termina su carga.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-img
+          src="assets/showcase.svg"
+          alt="Ilustración local de componentes Ionic"
+          (ionImgDidLoad)="imageLoaded = true"
+        ></ion-img>
+        <p class="media-status">{{ imageLoaded ? 'Imagen cargada' : 'Cargando imagen...' }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Thumbnail</ion-card-title>
+        <ion-card-subtitle>Presenta una miniatura junto al texto de una lista.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img src="assets/showcase.svg" alt="Miniatura de la demostración" />
+          </ion-thumbnail>
+          <ion-label>
+            <h2>Imagen responsive</h2>
+            <p>Se adapta al tamaño de la fila.</p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Icon</ion-card-title>
+        <ion-card-subtitle>Refuerza visualmente la acción asociada a un recurso multimedia.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content class="media-icon">
+        <ion-icon name="images-outline" color="primary" aria-label="Galería de imágenes"></ion-icon>
+        <span>Galería disponible</span>
+      </ion-card-content>
+    </ion-card>
+  </main>
+</ion-content>

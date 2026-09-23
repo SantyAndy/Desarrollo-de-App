@@ -1,0 +1,46 @@
+<ion-app>
+  <ion-split-pane contentId="main-content" when="lg">
+    <ion-menu contentId="main-content" type="reveal" aria-label="Navegación principal">
+      <ion-header class="menu-header">
+        <ion-toolbar>
+          <div class="brand-lockup">
+            <div class="brand-mark" aria-hidden="true">
+              <ion-icon name="grid-outline"></ion-icon>
+            </div>
+            <strong class="brand-name">Ionic Components</strong>
+          </div>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <p class="menu-section-label">Navegación</p>
+        <ion-list lines="none">
+          @for (item of menuItems; track item.url) {
+            <ion-item
+              [routerLink]="item.url"
+              routerDirection="root"
+              routerLinkActive="selected"
+              [routerLinkActiveOptions]="{ exact: item.url === '/home' }"
+              detail="false"
+            >
+              <ion-icon slot="start" [name]="item.icon"></ion-icon>
+              <ion-label>{{ item.title }}</ion-label>
+            </ion-item>
+          }
+        </ion-list>
+        <div class="menu-tip">
+          <ion-icon name="sparkles-outline" aria-hidden="true"></ion-icon>
+          <div>
+            <strong>Aprende haciendo</strong>
+            <span>9 secciones para explorar</span>
+          </div>
+        </div>
+      </ion-content>
+      <ion-footer>
+        <ion-toolbar>
+          <p>Proyecto académico · 2026</p>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

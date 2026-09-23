@@ -1,0 +1,206 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Componentes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="page-intro">
+    <h1>Componentes</h1>
+    <p>Elementos visuales básicos para construir interfaces claras y consistentes.</p>
+  </section>
+
+  <main class="showcase">
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Accordion</ion-card-title>
+        <ion-card-subtitle>Revela contenido relacionado sin abandonar el contexto.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-accordion-group>
+          <ion-accordion value="ionic">
+            <ion-item slot="header">
+              <ion-label>¿Qué es Ionic?</ion-label>
+            </ion-item>
+            <div slot="content" class="ion-padding">Un toolkit para crear aplicaciones web, móviles y de escritorio.</div>
+          </ion-accordion>
+          <ion-accordion value="angular">
+            <ion-item slot="header">
+              <ion-label>¿Por qué usar Angular?</ion-label>
+            </ion-item>
+            <div slot="content" class="ion-padding">Aporta estructura, componentes reutilizables y navegación tipada.</div>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Button</ion-card-title>
+        <ion-card-subtitle>Ejecuta una acción y muestra su resultado en un badge.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="button-row">
+          <ion-button (click)="clicks = clicks + 1">
+            <ion-icon slot="start" name="heart-outline"></ion-icon>
+            Primario
+          </ion-button>
+          <ion-button fill="outline" color="secondary">Outline</ion-button>
+          <ion-badge color="danger">{{ clicks }} clics</ion-badge>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Action Sheet</ion-card-title>
+        <ion-card-subtitle>Presenta un conjunto de acciones relacionadas desde la parte inferior.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button color="tertiary" (click)="showActionSheet()">Mostrar acciones</ion-button>
+        <ion-action-sheet
+          [isOpen]="actionSheetVisible"
+          header="Acciones disponibles"
+          [buttons]="[
+            { text: 'Guardar', icon: 'save-outline' },
+            { text: 'Compartir', icon: 'share-outline' },
+            { text: 'Cancelar', role: 'cancel' }
+          ]"
+          (didDismiss)="closeActionSheet()"
+        ></ion-action-sheet>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Alert</ion-card-title>
+        <ion-card-subtitle>Solicita atención y confirma una acción de forma explícita.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button (click)="showAlert()">Mostrar alert</ion-button>
+        <ion-alert
+          [isOpen]="alertVisible"
+          header="Demostración"
+          message="El componente Alert está funcionando correctamente."
+          [buttons]="['Cerrar']"
+          (didDismiss)="closeAlert()"
+        ></ion-alert>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Breadcrumbs</ion-card-title>
+        <ion-card-subtitle>Indica la ubicación actual y permite regresar a rutas anteriores.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-breadcrumbs>
+          <ion-breadcrumb routerLink="/home">Inicio</ion-breadcrumb>
+          <ion-breadcrumb>Nivel de componentes</ion-breadcrumb>
+          <ion-breadcrumb>Componentes</ion-breadcrumb>
+        </ion-breadcrumbs>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Checkbox</ion-card-title>
+        <ion-card-subtitle>Permite seleccionar o deseleccionar una opción.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-checkbox [(ngModel)]="termsAccepted" justify="space-between">
+            Aceptar demostración
+          </ion-checkbox>
+        </ion-item>
+        <p class="selection-value">
+          Estado: {{ termsAccepted ? 'seleccionado' : 'sin seleccionar' }}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Badge</ion-card-title>
+        <ion-card-subtitle>Comunica cantidades o estados breves junto a otro contenido.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-label>Notificaciones pendientes</ion-label>
+          <ion-badge color="warning">3</ion-badge>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Chip</ion-card-title>
+        <ion-card-subtitle>Representa una categoría que puede quitarse o identificarse rápidamente.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-chip color="success" outline="true">
+          <ion-icon name="checkmark-circle"></ion-icon>
+          <ion-label>Activo</ion-label>
+          <ion-icon name="close-circle" aria-label="Quitar etiqueta"></ion-icon>
+        </ion-chip>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Card</ion-card-title>
+        <ion-card-subtitle>Agrupa información relacionada en una superficie visual independiente.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card class="nested-card">
+          <ion-card-header>
+            <ion-card-title>Tarjeta anidada</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>Este bloque es una demostración de contenido agrupado.</ion-card-content>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Grid</ion-card-title>
+        <ion-card-subtitle>Distribuye contenido en columnas adaptables a distintos tamaños de pantalla.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" size-md="4"><div class="grid-card">12 / 4</div></ion-col>
+            <ion-col size="6" size-md="4"><div class="grid-card">6 / 4</div></ion-col>
+            <ion-col size="6" size-md="4"><div class="grid-card">6 / 4</div></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Icon</ion-card-title>
+        <ion-card-subtitle>Añade una representación visual reconocible a una acción o estado.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content class="icon-demo">
+        <ion-icon name="sparkles-outline" color="primary" aria-label="Destacado"></ion-icon>
+        <span>Componente destacado</span>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title>Text</ion-card-title>
+        <ion-card-subtitle>Aplica colores semánticos a fragmentos de texto.</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-text color="primary">
+          <p class="text-demo">Texto con color primario</p>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </main>
+</ion-content>
