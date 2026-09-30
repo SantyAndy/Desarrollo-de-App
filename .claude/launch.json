@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "camara-ionic",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "camara-ionic", "run", "start", "--", "--port", "8100"],
+      "port": 8100
+    },
+    {
+      "name": "camara-ionic-pwa",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "camara-ionic/www", "-p", "8200", "-c-1"],
+      "port": 8200
+    }
+  ]
+}

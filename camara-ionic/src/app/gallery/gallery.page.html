@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Bitácora de Evidencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Bitácora de Evidencias</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Configuración de calidad -->
+  <ion-item class="mode-card" lines="none" [class.hd]="isHighDef()">
+    <ion-icon slot="start" [name]="modeIcon()" class="mode-icon"></ion-icon>
+    <ion-toggle
+      [checked]="isHighDef()"
+      (ionChange)="onModeChange($event)"
+      aria-label="Cambiar modo de calidad"
+    >
+      <ion-label>
+        <h2>{{ modeTitle() }}</h2>
+        <p>{{ modeDescription() }}</p>
+      </ion-label>
+    </ion-toggle>
+  </ion-item>
+
+  <!-- Galería -->
+  <ion-grid>
+    <ion-row>
+      @for (photo of photoService.photos(); track photo.filepath) {
+        <ion-col size="12" size-sm="6" size-md="4">
+          <ion-card class="photo-card">
+            <ion-img [src]="photo.webPath" alt="Evidencia fotográfica"></ion-img>
+            <ion-button
+              expand="block"
+              fill="clear"
+              color="danger"
+              (click)="deletePhoto(photo)"
+            >
+              <ion-icon slot="start" name="trash-outline"></ion-icon>
+              Eliminar
+            </ion-button>
+          </ion-card>
+        </ion-col>
+      } @empty {
+        <ion-col size="12">
+          <div class="empty-state">
+            <ion-icon name="camera"></ion-icon>
+            <h2>No hay fotografías registradas.</h2>
+            <p>Presione el botón inferior para comenzar.</p>
+          </div>
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+
+  <!-- Botón flotante de captura -->
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button
+      id="capture-fab"
+      (click)="takePhoto()"
+      [disabled]="photoService.isCapturing()"
+      aria-label="Tomar fotografía"
+    >
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
